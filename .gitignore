@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+dist/
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Docker
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
