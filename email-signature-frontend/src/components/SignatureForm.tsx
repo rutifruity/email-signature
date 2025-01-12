@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import TemplatePicker from "./TemplatePicker";
 
+interface Signature {
+  html: string;
+  plainText: string;
+}
+
 const SignatureForm: React.FC = () => {
   const [userInfo, setUserInfo] = useState({
     fullName: "",
@@ -10,7 +15,10 @@ const SignatureForm: React.FC = () => {
     logoUrl: "",
   });
   const [template, setTemplate] = useState("template1");
-  const [signature, setSignature] = useState({ html: "", plainText: "" });
+  const [signature, setSignature] = useState<Signature>({
+    html: "",
+    plainText: "",
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +29,8 @@ const SignatureForm: React.FC = () => {
         userInfo,
       }
     );
-    setSignature(response.data);
+    console.log("response.data", response.data);
+    setSignature(response.data as Signature);
   };
 
   return (
